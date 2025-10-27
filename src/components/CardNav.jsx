@@ -17,13 +17,13 @@ const CardNav = ({
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
-          padding: "0.75rem 1.5rem",
+          padding: "1rem 1.5rem",
         }}
       >
         
         {/* Логотип слева */}
         <div className="logo-container" style={{ display: "flex", alignItems: "center" }}>
-          <img src={logo} alt={logoAlt} className="logo" style={{ height: "40px" }} />
+          <img src={logo} alt={logoAlt} className="logo" style={{ height: "30px" }} />
         </div>
 
         {/* Кнопка справа */}

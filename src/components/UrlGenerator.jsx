@@ -1,6 +1,8 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const UrlGenerator = () => {
+  const navigate = useNavigate();
   const [city, setCity] = useState("");
   const [site, setSite] = useState("");
   const [competitors, setCompetitors] = useState(["", "", "", "", ""]);
@@ -12,7 +14,36 @@ const UrlGenerator = () => {
   };
 
   const handleGenerate = () => {
-    console.log({ city, site, competitors });
+    // Валидация: проверяем, что хотя бы город и сайт заполнены
+    if (!city.trim() || !site.trim()) {
+      alert("Пожалуйста, заполните поля 'Ваш город' и 'Ваш сайт'");
+      return;
+    }
+
+    // Собираем данные для отправки на бэкенд
+    const formData = {
+      city,
+      site,
+      competitors: competitors.filter(comp => comp.trim() !== "") // Убираем пустые поля
+    };
+
+    console.log("Отправка данных:", formData);
+
+    // Здесь будет запрос на бэкенд, например:
+    // fetch('/api/generate-audit', {
+    //   method: 'POST',
+    //   headers: { 'Content-Type': 'application/json' },
+    //   body: JSON.stringify(formData)
+    // })
+    // .then(response => response.json())
+    // .then(data => {
+    //   // Сохраняем результаты и переходим на страницу результатов
+    //   navigate('/audit-results', { state: { auditData: data } });
+    // })
+    // .catch(error => console.error('Ошибка:', error));
+
+    // Пока бэкенда нет, просто переходим на страницу результатов
+    navigate('/audit-results', { state: { formData } });
   };
 
   const handleClear = () => {
@@ -52,16 +83,16 @@ const UrlGenerator = () => {
       <div className="url-generator-block url-generator-block__container">
         <label className="url-generator-label">Укажите сайты конкурентов:</label>
         <div className="url-generator-block__conc">
-        {competitors.map((comp, index) => (
-          <input
-            key={index}
-            type="text"
-            value={comp}
-            onChange={(e) => handleCompetitorChange(index, e.target.value)}
-            placeholder={`Сайт конкурента ${index + 1}`}
-            className="url-generator-input url-generator-input-conc"
-          />
-        ))}
+          {competitors.map((comp, index) => (
+            <input
+              key={index}
+              type="text"
+              value={comp}
+              onChange={(e) => handleCompetitorChange(index, e.target.value)}
+              placeholder={`Сайт конкурента ${index + 1}`}
+              className="url-generator-input url-generator-input-conc"
+            />
+          ))}
         </div>
       </div>
 

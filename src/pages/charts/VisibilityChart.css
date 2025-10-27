@@ -1,0 +1,155 @@
+.visibility-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+/* Статистика */
+.visibility-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-bottom: 10px;
+}
+
+.visibility-stat-card {
+  background: linear-gradient(135deg, #f0f7ff 0%, #e0efff 100%);
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  border: 1px solid #cce5ff;
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.08);
+  transition: all 0.3s ease;
+}
+
+.visibility-stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.15);
+}
+
+.visibility-stat-label {
+  font-size: 13px;
+  color: #667eea;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+}
+
+.visibility-stat-value {
+  font-size: 32px;
+  font-weight: 700;
+  color: #1a1a1a;
+  line-height: 1;
+}
+
+/* amCharts Container */
+.amcharts-container {
+  width: 100%;
+  height: 450px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  position: relative;
+}
+
+/* Стили для amCharts */
+.amcharts-container svg {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.amcharts-container .am4charts-PieChart3D {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* Легенда */
+.am4chart-legend {
+  font-size: 13px !important;
+}
+
+.am4chart-legend-item {
+  margin: 5px 10px !important;
+}
+
+/* Tooltip */
+.am4tooltip {
+  background: rgba(255, 255, 255, 0.95) !important;
+  border: 2px solid #667eea !important;
+  border-radius: 8px !important;
+  padding: 8px 12px !important;
+  font-size: 13px !important;
+  box-shadow: 0 4px 16px rgba(102, 126, 234, 0.2) !important;
+}
+
+.am4tooltip-text {
+  color: #667eea !important;
+  font-weight: 600;
+}
+
+/* Адаптивность */
+@media (max-width: 1024px) {
+  .amcharts-container {
+    height: 400px;
+  }
+
+  .visibility-stat-value {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 768px) {
+  .visibility-stats {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+
+  .visibility-stat-card {
+    padding: 16px;
+  }
+
+  .visibility-stat-label {
+    font-size: 12px;
+  }
+
+  .visibility-stat-value {
+    font-size: 24px;
+  }
+
+  .amcharts-container {
+    height: 350px;
+  }
+}
+
+@media (max-width: 480px) {
+  .visibility-stats {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .visibility-stat-card {
+    padding: 14px;
+  }
+
+  .visibility-stat-label {
+    font-size: 11px;
+  }
+
+  .visibility-stat-value {
+    font-size: 20px;
+  }
+
+  .amcharts-container {
+    height: 300px;
+  }
+
+  .am4chart-legend {
+    font-size: 12px !important;
+  }
+
+  .am4chart-legend-item {
+    margin: 3px 5px !important;
+  }
+}
