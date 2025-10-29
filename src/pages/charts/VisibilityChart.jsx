@@ -23,37 +23,33 @@ function VisibilityChart() {
   }, []);
 
   const loadScripts = () => {
-    const scripts = [
-      'https://cdn.amcharts.com/lib/4/core.js',
-      'https://cdn.amcharts.com/lib/4/charts.js',
-      'https://cdn.amcharts.com/lib/4/themes/animated.js'
-    ];
+  const scripts = [
+    'https://cdn.amcharts.com/lib/4/core.js',
+    'https://cdn.amcharts.com/lib/4/charts.js',
+    'https://cdn.amcharts.com/lib/4/themes/animated.js'
+  ];
 
-    let loadedCount = 0;
+  let loadedCount = 0;
 
-    scripts.forEach((src, index) => {
-      const script = document.createElement('script');
-      script.src = src;
-      script.async = true;
-      
-      script.onload = () => {
-        loadedCount++;
-        
-        // Когда все скрипты загружены
-        if (loadedCount === scripts.length) {
-          setTimeout(() => {
-            initChart();
-          }, 100);
-        }
-      };
-
-      script.onerror = () => {
-        console.error(`Failed to load script: ${src}`);
-      };
-
-      document.head.appendChild(script);
-    });
-  };
+  scripts.forEach((src) => {
+    const script = document.createElement('script');
+    script.src = src;
+    script.async = true;
+    
+    script.onload = () => {
+      loadedCount++;
+      if (loadedCount === scripts.length) {
+        setTimeout(() => {
+          if (window.am4core && window.am4charts && window.am4themes_animated) {
+            initChart();
+          }
+        }, 200); // увеличить задержку для надёжности
+      }
+    };
+    script.onerror = () => console.error(`Failed to load: ${src}`);
+    document.head.appendChild(script);
+  });
+};
 
   const initChart = () => {
     try {
