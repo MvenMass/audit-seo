@@ -1,6 +1,25 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+const BASE_CITIES = [
+  "Москва",
+  "Санкт-Петербург",
+  "Новосибирск",
+  "Екатеринбург",
+  "Казань",
+  "Нижний Новгород",
+  "Челябинск",
+  "Самара",
+  "Ростов-на-Дону",
+  "Уфа",
+  "Воронеж",
+  "Пермь",
+  "Красноярск",
+  "Волгоград",
+  "Саратов",
+  "Тюмень"
+];
+
 const UrlGenerator = () => {
   const navigate = useNavigate();
   const [city, setCity] = useState("");
@@ -14,35 +33,15 @@ const UrlGenerator = () => {
   };
 
   const handleGenerate = () => {
-    // Валидация: проверяем, что хотя бы город и сайт заполнены
     if (!city.trim() || !site.trim()) {
       alert("Пожалуйста, заполните поля 'Ваш город' и 'Ваш сайт'");
       return;
     }
-
-    // Собираем данные для отправки на бэкенд
     const formData = {
       city,
       site,
-      competitors: competitors.filter(comp => comp.trim() !== "") // Убираем пустые поля
+      competitors: competitors.filter(comp => comp.trim() !== "")
     };
-
-    console.log("Отправка данных:", formData);
-
-    // Здесь будет запрос на бэкенд, например:
-    // fetch('/api/generate-audit', {
-    //   method: 'POST',
-    //   headers: { 'Content-Type': 'application/json' },
-    //   body: JSON.stringify(formData)
-    // })
-    // .then(response => response.json())
-    // .then(data => {
-    //   // Сохраняем результаты и переходим на страницу результатов
-    //   navigate('/audit-results', { state: { auditData: data } });
-    // })
-    // .catch(error => console.error('Ошибка:', error));
-
-    // Пока бэкенда нет, просто переходим на страницу результатов
     navigate('/audit-results', { state: { formData } });
   };
 
@@ -55,18 +54,22 @@ const UrlGenerator = () => {
   return (
     <div className="url-generator">
       <div className="url-generator-header">
-        <span>Генератор URL</span> с выбором города
+        <span>Аудит сайта</span> от Seo Performance 
       </div>
 
       <div className="url-generator-block">
         <label className="url-generator-label">Ваш город:</label>
-        <input
-          type="text"
-          value={city}
-          onChange={(e) => setCity(e.target.value)}
-          placeholder="Введите город"
+        <select
           className="url-generator-input"
-        />
+          value={city}
+          onChange={e => setCity(e.target.value)}
+        >
+          <option value="">Выберите город</option>
+          {BASE_CITIES.map((c) => (
+            <option key={c} value={c}>{c}</option>
+          ))}
+        </select>
+      
       </div>
 
       <div className="url-generator-block">

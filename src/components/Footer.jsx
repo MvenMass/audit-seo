@@ -76,12 +76,15 @@ const Footer = ({ logo, logoAlt }) => {
         <div className="nfooter__top">
           <div className="nfooter__left-block">
             
-         <div>
+         <div className='main__footer-cont'>
                 <div className="logo-container" style={{ display: "flex", alignItems: "center", marginBottom: "15px",  paddingTop: '45px' }}>
-                <img src={logo} alt={logoAlt} className="logo" style={{ height: "40px" }} />
+                  
+                  <a target='_blank' href="https://seo-performance.ru/">
+            <img src={logo} alt={logoAlt} className="logo" style={{ height: "40px" }} />
+          </a>
               </div>
-              <span className="nfooter__title" style={{fontSize: '18px', paddingTop: '15px'}}>
-               *Чтобы заказать услугу — обращайтесь <br></br>
+              <span className="nfooter__title" style={{fontSize: '20px', paddingTop: '15px', fontWeight: '400'}}>
+               Чтобы заказать услугу — обращайтесь <br></br>
 к вашему менеджеру.
               </span>
             </div>

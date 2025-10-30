@@ -38,7 +38,7 @@ a {
   text-decoration: inherit;
 }
 a:hover {
-  color: #535bf2;
+  color: #fff !important;
 }
 
 /* Уберите или закомментируйте старые проблемные стили */
@@ -86,11 +86,13 @@ body {
 .circular-gallery:active {
   cursor: grabbing;
 }
-
+.logoloop {
+  background: #EDEEFF;
+}
 .logoloop {
   position: relative;
   overflow-x: hidden;
-
+  
   --logoloop-gap: 32px;
   --logoloop-logoHeight: 28px;
   --logoloop-fadeColorAuto: #ffffff;
@@ -244,18 +246,20 @@ body {
 }
 
 .card-nav-cta-button {
-  background-color: #111;
-  color: white;
+  background-color: #FFC702;
+  color: #2C2C2C;
   border: none;
   border-radius: 40px;
   font-weight: 500;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  padding: 11px 34px;
+  transition: all 0.3s ease;
   font-size: 14px;
 }
 
 .card-nav-cta-button:hover {
   background-color: #333;
+  color: #fff;
 }
 
 .card-nav-content {
@@ -378,21 +382,24 @@ body {
 /* Общий контейнер */
 .url-generator {
   width: 800px;
-  margin: 40px auto;
+  margin: 40px auto 100px auto;
   font-family: sans-serif;
 }
 
 /* Заголовок секции */
 .url-generator-header {
-  background-color: #4A5FE6;
-  color: #fff;
-  text-align: center;
-  padding: 50px 0;
-  border-radius: 10px;
-
-font-weight: 600;
-font-size: 32px;
-line-height: 120%;
+    background-color: #4A5FE6;
+    color: #fff;
+    text-align: center;
+    padding: 50px 0;
+    border-radius: 10px;
+    background-image: url(/src/assets/url-generator.png);
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 120%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: right;
 
 }
 
@@ -404,7 +411,7 @@ line-height: 120%;
 .url-generator-block {
     border-radius: 10px;
     gap: 20px;
-  background-color: #fff;
+  background-color: #F2F7FF;
   padding: 40px 60px;
   margin-top: 20px;
   display: grid;
@@ -468,6 +475,19 @@ letter-spacing: 0%;
   font-weight: 600;
   border: none;
   cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.url-generator-generate:hover {
+  background-color: #333;
+  color: #fff;
+}
+
+.main__footer-cont {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-between;
 }
 
 .url-generator-clear {
@@ -558,11 +578,8 @@ letter-spacing: 0%;
   font-size: 40px;
   line-height: 1.2;
   letter-spacing: -0.02em;
-  background: linear-gradient(111deg, #f2f7ff 14%, #ffed49 100%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
   margin: 0;
+  color: #fff;
 }
 
 .nfooter-accent__widget {

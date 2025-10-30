@@ -39,9 +39,11 @@ function TrafficTable() {
     }
   ];
 
+  const yandexFooter = "По данным Яндекса: 48/день";
+  const googleFooter = "По данным Google: 31/день";
+
   return (
     <div className="traffic-table-container">
-      <h3 className="table-subtitle">По данным Яндекса: 48/день</h3>
       <table className="traffic-table">
         <thead>
           <tr>
@@ -67,9 +69,15 @@ function TrafficTable() {
             </tr>
           ))}
         </tbody>
+        <tfoot>
+          <tr>
+            <td colSpan={7} className="table-footer-text">
+              {yandexFooter}
+            </td>
+          </tr>
+        </tfoot>
       </table>
       
-      <h3 className="table-subtitle" style={{marginTop: '40px'}}>По данным Google: 31/день</h3>
       <table className="traffic-table">
         <thead>
           <tr>
@@ -95,6 +103,13 @@ function TrafficTable() {
             </tr>
           ))}
         </tbody>
+        <tfoot>
+          <tr>
+            <td colSpan={7} className="table-footer-text">
+              {googleFooter}
+            </td>
+          </tr>
+        </tfoot>
       </table>
     </div>
   );

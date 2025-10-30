@@ -1,5 +1,4 @@
-import { useState, useMemo } from 'react';
-import './SemanticKeywordsTable.css';
+import { useState } from 'react';
 
 function SemanticKeywordsTable() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -15,60 +14,29 @@ function SemanticKeywordsTable() {
     top10: 1234 + Math.floor(Math.random() * 500)
   }));
 
-  // Вычисляем пагинацию
   const totalPages = Math.ceil(allKeywords.length / itemsPerPage);
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
   const currentData = allKeywords.slice(startIndex, endIndex);
 
-  // Генерируем номера страниц для отображения
+  // Генерация номеров страниц для отображения
   const getPageNumbers = () => {
     const pages = [];
     const maxPagesToShow = 5;
     const maxDotsPages = 3;
-
     if (totalPages <= maxPagesToShow + 2) {
-      // Если страниц мало, показываем все
-      for (let i = 1; i <= totalPages; i++) {
-        pages.push(i);
-      }
+      for (let i = 1; i <= totalPages; i++) pages.push(i);
     } else {
-      // Первая страница
       pages.push(1);
-
-      // Определяем диапазон для отображения
       let startPage = Math.max(2, currentPage - 1);
       let endPage = Math.min(totalPages - 1, currentPage + 1);
-
-      // Если мы близко к началу
-      if (currentPage <= 3) {
-        endPage = Math.min(totalPages - 1, maxDotsPages + 1);
-      }
-
-      // Если мы близко к концу
-      if (currentPage > totalPages - 3) {
-        startPage = Math.max(2, totalPages - maxDotsPages);
-      }
-
-      // Добавляем точки если нужно
-      if (startPage > 2) {
-        pages.push('...');
-      }
-
-      // Добавляем страницы
-      for (let i = startPage; i <= endPage; i++) {
-        pages.push(i);
-      }
-
-      // Добавляем точки если нужно
-      if (endPage < totalPages - 1) {
-        pages.push('...');
-      }
-
-      // Последняя страница
+      if (currentPage <= 3) endPage = Math.min(totalPages - 1, maxDotsPages + 1);
+      if (currentPage > totalPages - 3) startPage = Math.max(2, totalPages - maxDotsPages);
+      if (startPage > 2) pages.push('...');
+      for (let i = startPage; i <= endPage; i++) pages.push(i);
+      if (endPage < totalPages - 1) pages.push('...');
       pages.push(totalPages);
     }
-
     return pages;
   };
 
@@ -77,43 +45,42 @@ function SemanticKeywordsTable() {
   const handlePageChange = (page) => {
     if (typeof page === 'number') {
       setCurrentPage(page);
-      // Скролл к таблице
-      document.querySelector('.semantic-keywords-table')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      // Скроллим к нашей уникальной таблице
+      document.getElementById('semantic-keywords-table')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   };
 
   const handleNextPage = () => {
-    if (currentPage < totalPages) {
-      handlePageChange(currentPage + 1);
-    }
+    if (currentPage < totalPages) handlePageChange(currentPage + 1);
   };
 
   return (
-    <div className="semantic-keywords-container">
-      <div className="semantic-keywords-table">
-        <table className="keywords-table">
-          <thead>
-            <tr>
-              <th>Ключевое слово/фраза</th>
-              <th>Частотность</th>
-              <th>ТОП 1</th>
-              <th>ТОП 5</th>
-              <th>ТОП 10</th>
+    <div className="traffic-table-container">
+      <table
+        className="traffic-table semantic-keywords-table"
+        id="semantic-keywords-table"
+      >
+        <thead>
+          <tr>
+            <th>Ключевое слово/фраза</th>
+            <th>Частотность</th>
+            <th>ТОП 1</th>
+            <th>ТОП 5</th>
+            <th>ТОП 10</th>
+          </tr>
+        </thead>
+        <tbody>
+          {currentData.map((row) => (
+            <tr key={row.id}>
+              <td>{row.keyword}</td>
+              <td>{row.frequency}</td>
+              <td>{row.top1}</td>
+              <td>{row.top5}</td>
+              <td>{row.top10}</td>
             </tr>
-          </thead>
-          <tbody>
-            {currentData.map((row, idx) => (
-              <tr key={row.id}>
-                <td className="keyword-cell">{row.keyword}</td>
-                <td>{row.frequency}</td>
-                <td>{row.top1}</td>
-                <td>{row.top5}</td>
-                <td>{row.top10}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+          ))}
+        </tbody>
+      </table>
 
       {/* Пагинация */}
       <div className="pagination">
@@ -142,13 +109,7 @@ function SemanticKeywordsTable() {
           </button>
         </div>
 
-        {/* Информация о странице */}
-        <div className="pagination-info">
-          Страница <strong>{currentPage}</strong> из <strong>{totalPages}</strong>
-          <span className="pagination-count">
-            (показаны записи {startIndex + 1}-{Math.min(endIndex, allKeywords.length)} из {allKeywords.length})
-          </span>
-        </div>
+        
       </div>
     </div>
   );

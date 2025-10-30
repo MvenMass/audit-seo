@@ -5,7 +5,6 @@
 .audit-results {
   min-height: 100vh;
   background-color: #F2F7FF;
-  padding-bottom: 60px;
 }
 
 .audit-header {
@@ -86,7 +85,7 @@
 .audit-description {
   font-size: 16px;
   width: 50%;
-  color: #666;
+  color: #2C2C2C;
   line-height: 1.6;
   margin: 0;
 }
@@ -102,8 +101,7 @@
 .metric-card {
   background: white;
   padding: 20px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-  border-right: 4px solid #8383835a;
+  border-right: 0.5px solid #8383835a;
 }
 .metrics-grid .metric-card:last-child {
   border: none;
@@ -112,16 +110,16 @@
 
 .metric-label {
   font-size: 16px;
-  color: #999;
-  margin-bottom: 10px;
-  text-transform: uppercase;
+  color: #000;
+  margin-bottom: 0px;
   letter-spacing: 0.5px;
+  font-weight: 500;
 }
 
 .metric-value {
   font-size: 16px;
   font-weight: 600;
-  color: #1a1a1a;
+  color: rgba(44, 44, 44, 0.6);
   word-break: break-word;
 }
 
@@ -137,8 +135,8 @@
 /* Основная сетка: 2-колоночный макет */
 .audit-wrapper {
   display: grid;
-  grid-template-columns: 280px 1fr;
-  gap: 40px;
+  grid-template-columns: 320px 1fr;
+  gap: 30px;
   width: 100%;
 }
 
@@ -150,10 +148,7 @@
 }
 
 .table-of-contents {
-  background: white;
   padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
 }
 
 .sidebar-title {
@@ -162,35 +157,56 @@
 
 /* Оглавление */
 .section-title {
-  font-size: 24px;
-  font-weight: 700;
-  color: #1a1a1a;
+font-weight: 600;
+font-size: 20px;
+line-height: 120%;
+letter-spacing: 0%;
+vertical-align: middle;
+color: #4A5FE6;
   margin-bottom: 20px;
   margin-top: 0;
 }
-
 .toc-list {
   list-style-position: inside;
   color: #333;
   line-height: 2;
   margin: 0;
   padding: 0;
+  list-style: auto; /* Убедитесь, что это ordered list с нумерацией */
+  padding-left: 30px;
+}
+
+.toc-list ol { /* Если список внутри ol, уточните тип */
+  list-style-type: decimal; /* Стандартная нумерация */
+  counter-reset: item; /* Опционально для кастомной нумерации */
 }
 
 .toc-list li {
+  list-style: auto;
+  line-height: 130%;
+  margin-bottom: 18px;
   padding-left: 10px;
 }
 
+.toc-list li::marker {
+  color: #000; /* Цвет номеров такой же, как у .toc-link */
+  font-weight: 500; /* Жирность номеров, как у текста */
+  font-size: 16px; /* Размер номеров, как у текста */
+}
+
 .toc-link {
-  color: #667eea;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 120%;
+  letter-spacing: 0%;
+  vertical-align: middle;
+  color: #000;
   text-decoration: none;
   transition: all 0.3s ease;
-  font-size: 14px;
 }
 
 .toc-link:hover {
-  color: #764ba2;
-  text-decoration: underline;
+  color: #4a5fe6 !important;
 }
 
 /* Правая колонка - Основной контент */
@@ -212,11 +228,26 @@
 }
 
 .section-description {
-  font-size: 15px;
-  color: #666;
-  line-height: 1.6;
+font-weight: 400;
+font-size: 16px;
+line-height: 130%;
+letter-spacing: -2%;
+color: #2C2C2C;
   margin-bottom: 30px;
   margin-top: 0;
+}
+
+.semantic-core-note {
+  margin-bottom: 60px;
+}
+
+.table-footer-text {
+  background-color: #E4EFFF;
+  color: #13007A;
+font-weight: 600;
+font-size: 16px;
+line-height: 120%;
+
 }
 
 /* Графики и кнопки */
@@ -224,23 +255,23 @@
   width: 100%;
   overflow-x: auto;
 }
-
 .chart-buttons {
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
-  margin-bottom: 20px;
+  margin-bottom: 60px;
 }
 
 .chart-btn {
-  padding: 10px 20px;
-  border: 1px solid #ddd;
-  background: white;
-  border-radius: 8px;
-  font-size: 14px;
+  padding: 17px 16px;
+  border: 1px solid #4A5FE6;
+  background: #F2F7FF;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
-  color: #666;
+  color: #000;
   white-space: nowrap;
 }
 
@@ -249,11 +280,20 @@
   border-color: #667eea;
 }
 
-.chart-btn.active {
-  background: #667eea;
-  color: white;
-  border-color: #667eea;
+.chart-btn:focus {
+  outline: none; /* Удаляет бордер фокуса при клике или Tab */
 }
+
+.chart-btn.active {
+  background: #4A5FE6;
+  color: white;
+}
+
+/* Опционально: для доступности добавьте кастомный фокус-стиль вместо outline */
+.chart-btn:focus-visible {
+  box-shadow: 0 0 0 2px rgba(74, 95, 230, 0.5); /* Легкий glow для клавиатурной навигации */
+}
+
 
 /* Таблицы */
 .semantic-section {
@@ -296,24 +336,40 @@
 
 /* Проверка robots.txt */
 .robots-check {
-  background: #f8f9fa;
-  padding: 25px;
+  padding: 25px 25px 25px 0;
   border-radius: 8px;
   margin-bottom: 30px;
-  border-left: 4px solid #06d6a0;
 }
 
 .robots-status {
   margin-bottom: 15px;
-  font-size: 14px;
   color: #333;
+font-size: 16px;
+line-height: 130%;
+
 }
+
+.robots-status strong {
+  color: #4a5fe6;
+}
+
+.robots-info strong {
+  color: #4a5fe6;
+}
+
 
 .robots-info ul {
   margin-top: 10px;
   padding-left: 20px;
-  color: #666;
-  font-size: 14px;
+}
+
+.robots-info ul li {
+  list-style: disc;
+font-weight: 400;
+font-size: 16px;
+line-height: 130%;
+letter-spacing: -2%;
+
 }
 
 /* Таблица трафика и конкурентов */
@@ -335,7 +391,7 @@
 .competitor-table {
   width: 100%;
   border-collapse: collapse;
-  margin-bottom: 20px;
+  margin-bottom: 50px;
   font-size: 13px;
   min-width: 100%;
 }
@@ -344,18 +400,24 @@
 .traffic-table td,
 .competitor-table th,
 .competitor-table td {
-  padding: 12px;
-  text-align: left;
-  border: 1px solid #e0e0e0;
+  padding: 20px;
+  text-align: center;
+  border: 1px solid #A7A3C9;
   white-space: nowrap;
 }
 
 .traffic-table th,
 .competitor-table th {
-  background: #f8f9fa;
-  font-weight: 600;
-  color: #495057;
+  background: #E4EFFF;
+font-weight: 600;
+font-size: 16px;
+line-height: 120%;
+letter-spacing: -2%;
+color: #13007A;
+  text-align: center;
 }
+
+
 
 .traffic-table tbody tr:hover,
 .competitor-table tbody tr:hover {
@@ -539,6 +601,7 @@
     font-size: 13px;
   }
 }
+
 /* SSL Report Table */
 .ssl-report-container {
   width: 100%;
@@ -549,6 +612,7 @@
   width: 100%;
   border-collapse: collapse;
   background: white;
+  margin: 0;
 }
 
 .ssl-report-row {
@@ -559,26 +623,72 @@
   border-bottom: none;
 }
 
+/* Левая колонка: синий фон, центрированный текст */
 .ssl-report-label {
-  background: #eef2ff;
+  background: #E4EFFF !important;
   padding: 15px 20px;
   font-weight: 600;
-  color: #333;
-  text-align: left;
-  width: 35%;
+  color: #13007A !important;
+  text-align: center;
+  width: 50%;
   font-size: 14px;
-}
-
-.ssl-report-value {
-  padding: 15px 20px;
-  color: #666;
-  font-size: 14px;
+  vertical-align: middle;
   word-break: break-word;
+  border: 1px solid #A7A3C9 !important;   /* Бордер для ячейки */
 }
 
+/* Правая колонка: белый фон, центрированный чёрный текст */
+.ssl-report-value {
+  background: #FFFFFF !important;
+  padding: 15px 20px;
+  color: #000000 !important;
+  text-align: center;
+  width: 50%;
+  font-size: 14px;
+  vertical-align: middle;
+  word-break: break-word;
+  border: 1px solid #A7A3C9 !important;   /* Бордер для ячейки */
+}
+
+/* Статус: зелёный переопределение для правой колонки */
 .ssl-status-active {
-  color: #06d6a0;
+  color: #06d6a0 !important;
   font-weight: 600;
+}
+
+/* Дополнительно: если нужны скруглённые углы для всей таблицы */
+.ssl-report-container table {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.ssl-report-row:first-child .ssl-report-label {
+  border-top-left-radius: 8px;
+}
+
+.ssl-report-row:first-child .ssl-report-value {
+  border-top-right-radius: 8px;
+}
+
+.ssl-report-row:last-child .ssl-report-label {
+  border-bottom-left-radius: 8px;
+}
+
+.ssl-report-row:last-child .ssl-report-value {
+  border-bottom-right-radius: 8px;
+}
+
+@media (max-width: 768px) {
+  .ssl-report-label,
+  .ssl-report-value {
+    padding: 10px 10px;
+    font-size: 12px;
+    width: 50%;
+  }
+
+  .ssl-report-table {
+    font-size: 12px;
+  }
 }
 
 /* Visibility Chart */
@@ -728,6 +838,29 @@
   border-bottom: 1px solid #e0e0e0;
 }
 
+.traffic-table {
+  border-collapse: separate; /* Разделяет границы ячеек, позволяет border-radius */
+  border-spacing: 0; /* Убирает промежутки между ячейками */
+  overflow: hidden; /* Обрезает содержимое по углам таблицы */
+  border-radius: 10px; /* Скругление всех углов */
+}
+
+/* Дополнительно: скругление конкретных углов, если нужно */
+.traffic-table thead th:first-child {
+  border-top-left-radius: 10px; /* Левый верхний угол */
+}
+
+.traffic-table thead th:last-child {
+  border-top-right-radius: 10px; /* Правый верхний угол */
+}
+
+.traffic-table tfoot td:first-child {
+  border-bottom-left-radius: 10px; /* Левый нижний угол */
+}
+
+.traffic-table tfoot td:last-child {
+  border-bottom-right-radius: 10px; /* Правый нижний угол */
+}
 .robots-table tbody tr {
   border-bottom: 1px solid #e0e0e0;
   transition: background-color 0.2s ease;
@@ -746,7 +879,7 @@
 /* Пагинация */
 .pagination {
   display: flex;
-  justify-content: center;
+  justify-content: center !important;
   align-items: center;
   margin-top: 25px;
   padding-top: 20px;
@@ -764,31 +897,49 @@
   min-width: 40px;
   height: 40px;
   padding: 8px 12px;
-  border: 1px solid #ddd;
-  background: white;
+  border: none !important;           /* вообще убрать border */
+  background: #E4EFFF !important;
   border-radius: 6px;
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
-  color: #666;
+  color: #4A5FE6 !important;
   display: flex;
   align-items: center;
   justify-content: center;
+  outline: none;                    /* убрать стандартный фокус */
+  box-shadow: none;                 /* на всякий случай */
 }
 
+/* По hover просто меняем фон/цвет — бордера нет */
 .pagination-btn:hover:not(:disabled) {
-  border-color: #667eea;
   color: #667eea;
   background: #f5f7ff;
+  border: none !important;
 }
 
-.pagination-btn.active {
-  background: #667eea;
-  color: white;
-  border-color: #667eea;
-  font-weight: 600;
+#sitemap-summary > .section-description {
+  margin-bottom: 30px;
 }
+
+/* Активная без border */
+.pagination-btn.active {
+  background: #4A5FE6 !important;
+  color: white !important;
+  font-weight: 600;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Без фокуса */
+.pagination-btn:focus {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
 
 .pagination-btn.dots {
   cursor: default;
@@ -830,3 +981,43 @@
     font-size: 12px;
   }
 }
+td {
+  padding: 10px !important;
+font-weight: 400;
+font-size: 16px;
+line-height: 120%;
+letter-spacing: -2%;
+color: #000;
+} 
+
+
+
+/* Таблица внутри wrapper'а: без collapse, чтобы радиус работал */
+.traffic-table {
+  border-collapse: separate; /* Важно: separate для радиуса */
+  border-spacing: 0; /* Убирает пробелы между ячейками */
+}
+
+
+
+/* Первая строка заголовков колонок: верхние углы с радиусом (если нужно) */
+.traffic-table thead tr:nth-child(2) th:first-child {
+  border-top-left-radius: 0; /* Wrapper берёт радиус */
+}
+
+.traffic-table thead tr:nth-child(2) th:last-child {
+  border-top-right-radius: 0;
+}
+
+
+
+.traffic-table tr:last-child td:first-child {
+  border-bottom-left-radius: 0; /* Wrapper берёт радиус */
+}
+
+.traffic-table tr:last-child td:last-child {
+  border-bottom-right-radius: 0;
+}
+
+
+

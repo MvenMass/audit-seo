@@ -1,4 +1,5 @@
 import { GoArrowUpRight } from "react-icons/go";
+import { Link } from "react-router-dom";
 
 const CardNav = ({
   logo,
@@ -20,35 +21,28 @@ const CardNav = ({
           padding: "1rem 1.5rem",
         }}
       >
-        
-        {/* Логотип слева */}
+        {/* Логотип слева — всегда на главную (SPA-ссылка) */}
         <div className="logo-container" style={{ display: "flex", alignItems: "center" }}>
-          <img src={logo} alt={logoAlt} className="logo" style={{ height: "30px" }} />
+          <Link to="/" style={{ display: "flex", alignItems: "center" }}>
+            <img src={logo} alt={logoAlt} className="logo" style={{ height: "30px" }} />
+          </Link>
         </div>
 
         {/* Кнопка справа */}
-      <a 
-  href="https://seo-performance.ru/" 
-  target="_blank" 
-  rel="noopener noreferrer"
-  style={{ textDecoration: 'none' }}
->
-  <button
-    type="button"
-    className="card-nav-cta-button"
-    style={{
-      backgroundColor: buttonBgColor,
-      color: buttonTextColor,
-      padding: "11px 34px",
-      borderRadius: "40px",
-      fontWeight: "600",
-      border: 'none',
-      cursor: 'pointer'
-    }}
-  >
-    Связаться с нами
-  </button>
-</a>
+        <a
+          href="https://seo-performance.ru/"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{ textDecoration: 'none' }}
+        >
+          <button
+            type="button"
+            className="card-nav-cta-button"
+          
+          >
+            Связаться с нами
+          </button>
+        </a>
       </nav>
     </div>
   );

@@ -68,7 +68,7 @@ function RobotsChart() {
   const endIndex = startIndex + itemsPerPage;
   const tableRows = allRows.slice(startIndex, endIndex);
 
-  // Генерируем номера страниц
+  // Генерация номеров страниц для пагинации
   const getPageNumbers = () => {
     const pages = [];
     const maxPagesToShow = 5;
@@ -80,7 +80,6 @@ function RobotsChart() {
     } else {
       pages.push(1);
       if (currentPage > 3) pages.push('...');
-
       let startPage = Math.max(2, currentPage - 1);
       let endPage = Math.min(totalPages - 1, currentPage + 1);
 
@@ -94,38 +93,35 @@ function RobotsChart() {
       for (let i = startPage; i <= endPage; i++) {
         pages.push(i);
       }
-
       if (currentPage < totalPages - 2) pages.push('...');
       pages.push(totalPages);
     }
-
     return pages;
   };
 
   const pageNumbers = getPageNumbers();
 
-  const options = {
-    responsive: true,
-    maintainAspectRatio: false,
-    plugins: {
-      legend: {
-        display: false
-      },
-      tooltip: {
-        mode: 'index',
-        intersect: false
-      }
+const options = {
+  responsive: true,
+  maintainAspectRatio: false,
+  plugins: {
+    legend: { display: false },
+    tooltip: { mode: 'index', intersect: false }
+  },
+  scales: {
+    x: {
+      grid: { display: false },
+      offset: true,
+      // min: -0.5,
+      // max: labels.length - 0.5,
     },
-    scales: {
-      x: {
-        grid: { display: false }
-      },
-      y: {
-        beginAtZero: true,
-        grid: { color: 'rgba(0, 0, 0, 0.05)' }
-      }
+    y: {
+      beginAtZero: true,
+      grid: { color: 'rgba(0, 0, 0, 0.05)' }
     }
-  };
+  }
+};
+
 
   const chartData = {
     labels,
@@ -170,21 +166,21 @@ function RobotsChart() {
         ))}
       </div>
 
-      {/* График (только один) */}
-     <div style={{ 
-  height: '500px', 
-  marginTop: '20px',
-  background: 'white',
-  borderRadius: '8px',
-  padding: '20px',
-  boxShadow: '0 2px 8px rgba(0, 0, 0, 0.04)'
-}}>
-  <Bar options={options} data={chartData} />
-</div>
+      {/* График */}
+      <div style={{
+        height: '500px',
+        marginTop: '20px',
+        background: 'white',
+        borderRadius: '8px',
+        padding: '20px 40px 60px', // внутренние отступы по бокам
+        boxShadow: '0 2px 8px rgba(0, 0, 0, 0.04)'
+      }}>
+        <Bar options={options} data={chartData} />
+      </div>
 
-      {/* Таблица */}
-      <div className="robots-table-container">
-        <table className="robots-table">
+      {/* Таблица и пагинация */}
+      <div className="traffic-table-container">
+        <table className="traffic-table">
           <thead>
             <tr>
               <th>Строка</th>
@@ -203,7 +199,6 @@ function RobotsChart() {
           </tbody>
         </table>
 
-        {/* Пагинация */}
         <div className="pagination">
           <div className="pagination-buttons">
             {pageNumbers.map((page, idx) => (
@@ -218,7 +213,6 @@ function RobotsChart() {
                 {page}
               </button>
             ))}
-
             {currentPage < totalPages && (
               <button
                 className="pagination-btn arrow-btn"

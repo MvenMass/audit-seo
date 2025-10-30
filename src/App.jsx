@@ -12,7 +12,7 @@ import logo5 from './assets/logo-6.png'
 import logo6 from './assets/logo-7.png'
 import logo7 from './assets/logo-8.png'
 import CardNav from './components/CardNav'
-import logo from './assets/logo.svg';
+import logo from './assets/logomain.png';
 import UrlGenerator from './components/UrlGenerator';
 import Footer from './components/Footer'; // Импортируем футер
 function App() {
@@ -80,7 +80,7 @@ const imageLogos = [
 
  
 
-  <div style={{ height: '200px', position: 'relative', overflow: 'hidden'}}>
+  <div style={{ height: '120px', position: 'relative', overflow: 'hidden',backgroundColor: '#EDEEFF'}}>
       <LogoLoop
         logos={imageLogos}
         speed={40}
