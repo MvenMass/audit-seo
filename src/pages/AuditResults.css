@@ -3,7 +3,7 @@
 }
 
 :root {
-    background-color: #F2F7FF;
+    background-color: #F2F7FF ; 
 
 }
 
@@ -55,7 +55,7 @@
 /* Основной контейнер */
 .audit-container {
   max-width: 1400px;
-  margin: 120px auto;
+  margin: 75px auto;
   padding: 0 20px;
   width: 100%;
 }
