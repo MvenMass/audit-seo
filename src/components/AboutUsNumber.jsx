@@ -24,7 +24,7 @@ function AboutUsNumber() {
 
         <div className="about__us-number-stats-container-right">
           <div className="us-number-stat-block about-number-stat-block">
-            <div className="number is-visible">32<span>%</span></div>
+            <div className="number is-visible">32<span className='number-accent'>%</span></div>
             <div className="description">новых клиентов приходят<br /> по рекомендациям</div>
           </div>
 

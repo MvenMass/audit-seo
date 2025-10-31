@@ -34,7 +34,7 @@ function CompetitorTable() {
 
   return (
     <div className="competitor-table-container">
-      <table className="competitor-table">
+      <table className="traffic-table">
         <thead>
           <tr>
             <th>Домен</th>

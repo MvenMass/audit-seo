@@ -204,22 +204,25 @@ body {
   }
 }
 .card-nav-container {
-  position: fixef;
-  top: 2em;
-
+  position: fixed;
+  top: 0;
+      background-color: rgb(75, 96, 230);
   width: 100%;
   z-index: 99;
   box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .card-nav {
   display: block;
   height: 60px;
-  padding: 0;
+  margin: 10px 0 !important;
+    max-width: 1440px;
+  width: 100% !important;
   background-color: white;
-  border: 0.5px solid rgba(255, 255, 255, 0.1);
-
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 0 40px !important;
   position: relative;
   overflow: hidden;
   will-change: height;
@@ -432,12 +435,21 @@ letter-spacing: 0%;
 .url-generator-input {
   grid-column: 1/2;
   padding: 10px;
-  border-radius: 4px;
+  border-radius: 10px;
   color: #000;
   border: 1px solid #ccc;
   margin-bottom: 8px;
   display: block;
   background-color: transparent;
+  height: 50px;
+}
+
+.url-generator-block select.url-generator-input {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding: 16px 20px 16px 20px;
+  background: transparent url('./assets/arrow_2.svg') no-repeat right 20px center;
 }
 
 .url-generator-block__container {

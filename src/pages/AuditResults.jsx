@@ -134,29 +134,33 @@ function AuditResults() {
       <li>
         <a href="#domain-age" className="toc-link">Возраст доменов</a>
       </li>
+
       <li>
-        <a href="#top-requests" className="toc-link">История запросов по доменам</a>
+        <a href="#traffic" className="toc-link">Трафик, видимость и CMS</a>
       </li>
       <li>
-        <a href="#semantic-core" className="toc-link">Пересечение семантического ядра</a>
+        <a href="#top-requests" className="toc-link">История запросов по доменам (ТОП 1/3/5/10/50)</a>
+      </li>
+      <li>
+        <a href="#semantic-core" className="toc-link">Пересечение семантического ядра с конкурентами</a>
       </li>
          <li>
-        <a href="#seasonality" className="toc-link">Сезонность</a>
+        <a href="#seasonality" className="toc-link">Сезонность запросов</a>
       </li>
       <li>
-        <a href="#favicon" className="toc-link">Наличие фавикона</a>
+        <a href="#favicon" className="toc-link">Наличие favicon</a>
       </li>
             <li>
-        <a href="#pagespeed" className="toc-link">PageSpeed</a>
+        <a href="#pagespeed" className="toc-link">Производительность PageSpeed (мобильная и десктопная)</a>
       </li>
            <li>
-        <a href="#ssl-report" className="toc-link">SSL-отчет</a>
+        <a href="#ssl-report" className="toc-link">Отчёт о проверке SSL‑сертификата</a>
       </li>
         <li>
-        <a href="#robots" className="toc-link">Проверка robots.txt и sitemap</a>
+        <a href="#robots" className="toc-link">Проверка файла robots.txt и карта сайта</a>
       </li>
         <li>
-        <a href="#sitemap-summary" className="toc-link">Итоговая статистика карты сайта</a>
+        <a href="#sitemap-summary" className="toc-link">Статистика позиций по запросам (бар‑диаграммы)</a>
       </li>
       <li>
         <a href="#semantic-keywords" className="toc-link">Семантическое ядро: таблица ключевых слов</a>

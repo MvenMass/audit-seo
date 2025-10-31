@@ -114,13 +114,15 @@ function TopDomainsChart() {
   };
 
   // Формируем datasets на основе активного таба
-  const datasets = tabsData[activeTab].map(item => ({
-    label: item.label,
-    data: item.data,
-    borderColor: item.borderColor,
-    backgroundColor: item.backgroundColor,
-    tension: 0.4
-  }));
+const datasets = tabsData[activeTab].map((item, index) => ({
+  label: item.label,
+  data: item.data,
+  borderColor: item.borderColor,
+  backgroundColor: item.backgroundColor,
+  tension: 0.4,
+  borderWidth: index === 0 ? 6 : 2, // Первый домен толще
+}));
+
 
   const data = {
     labels,

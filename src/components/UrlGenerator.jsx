@@ -101,7 +101,7 @@ const UrlGenerator = () => {
 
       <div className="url-generator-buttons">
         <button className="url-generator-generate" onClick={handleGenerate}>
-          Сгенерировать URL
+          Начать анализ
         </button>
         <button className="url-generator-clear" onClick={handleClear}>
           Очистить данные

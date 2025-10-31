@@ -48,53 +48,53 @@ function SeasonalityChart() {
     200000, 230000, 250000, 280000, 240000, 200000, 170000, 150000, 130000, 120000, 120000, 120000, 120000
   ];
 
-  const options = {
-    responsive: true,
-    maintainAspectRatio: false,
-    plugins: {
-      legend: {
-        position: 'bottom',
-        labels: {
-          usePointStyle: true,
-          padding: 20,
-          font: {
-            size: 13
-          }
+const options = {
+  responsive: true,
+  maintainAspectRatio: false,
+  plugins: {
+    legend: {
+      position: 'bottom',
+      labels: {
+        usePointStyle: true,
+        padding: 20,
+        font: {
+          size: 13
         }
-      }
-    },
-    scales: {
-      x: {
-        grid: {
-          display: true,
-          color: 'rgba(0, 0, 0, 0.05)'
-        },
-        ticks: {
-          maxRotation: 45,
-          minRotation: 45,
-        }
-      },
-      y: {
-        beginAtZero: true,
-        max: 400000,
-        grid: {
-          display: true,
-          color: 'rgba(0, 0, 0, 0.05)'
-        },
-        ticks: {
-          stepSize: 50000,
-          callback: function(value) {
-            return value / 1000 + 'K';
-          }
-        }
-      }
-    },
-    elements: {
-      line: {
-        tension: 0 // Глобально: острые углы для всех линий
       }
     }
-  };
+  },
+  scales: {
+    x: {
+      grid: {
+        display: true,
+        color: 'rgba(0, 0, 0, 0.05)'
+      },
+      ticks: {
+        maxRotation: 45,
+        minRotation: 45,
+      }
+    },
+    y: {
+      beginAtZero: true,
+      max: 400000,
+      grid: {
+        display: true,
+        color: 'rgba(0, 0, 0, 0.05)'
+      },
+      ticks: {
+        stepSize: 50000,
+        callback: function(value) {
+          return value.toString(); // без пробелов
+        }
+      }
+    }
+  },
+  elements: {
+    line: {
+      tension: 0
+    }
+  }
+};
 
   const data = {
     labels,

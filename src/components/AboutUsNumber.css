@@ -20,6 +20,10 @@
     gap: 10px;
 }
 
+.number-accent {
+    line-height: 100% !important;
+}
+
 .icon-text img {
     width: 20px;
     height: 20px;
@@ -35,6 +39,10 @@
 .mob-about__us-header {
     display: none;
 }
+
+ .about-number-stat-block {
+    height: 100px;
+} 
 
 .about__us-header-title span{
     font-style: italic;
@@ -99,7 +107,7 @@
 }
 
 .number span {
-    line-height: 265%;
+    line-height: 213%;
     font-size: 40px;
 }
 

@@ -2,6 +2,11 @@
   box-sizing: border-box;
 }
 
+:root {
+    background-color: #F2F7FF;
+
+}
+
 .audit-results {
   min-height: 100vh;
   background-color: #F2F7FF;
@@ -61,6 +66,7 @@
     flex-direction: row;
     gap: 15px;
     margin-bottom: 100px;
+    padding-top: 100px;
     justify-content: space-between;
     align-items: flex-start;
 }
@@ -148,7 +154,7 @@
 }
 
 .table-of-contents {
-  padding: 30px;
+  padding: 40px 30px;
 }
 
 .sidebar-title {
@@ -173,7 +179,7 @@ color: #4A5FE6;
   margin: 0;
   padding: 0;
   list-style: auto; /* Убедитесь, что это ordered list с нумерацией */
-  padding-left: 30px;
+  padding-left: 20px;
 }
 
 .toc-list ol { /* Если список внутри ol, уточните тип */
@@ -184,8 +190,12 @@ color: #4A5FE6;
 .toc-list li {
   list-style: auto;
   line-height: 130%;
-  margin-bottom: 18px;
+  margin-bottom: 14px;
   padding-left: 10px;
+}
+
+.semantic-core-note strong {
+  color: #4a5fe6;
 }
 
 .toc-list li::marker {
@@ -420,6 +430,40 @@ color: #13007A;
 
 
 .traffic-table tbody tr:hover,
+.competitor-table tbody tr:hover {
+  background: #f8f9fa;
+}
+.competitor-table-container {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.competitor-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 50px;
+  font-size: 13px;
+  min-width: 100%;
+}
+
+.competitor-table th,
+.competitor-table td {
+  padding: 20px;
+  text-align: center;
+  border: 1px solid #A7A3C9; /* Посмотрите цвет */
+  white-space: nowrap;
+}
+
+.competitor-table th {
+  background: #E4EFFF;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 120%;
+  letter-spacing: -2%;
+  color: #13007A;
+  text-align: center;
+}
+
 .competitor-table tbody tr:hover {
   background: #f8f9fa;
 }
@@ -690,6 +734,20 @@ color: #13007A;
     font-size: 12px;
   }
 }
+.ssl-report-row {
+  transition: background-color 0.3s ease;
+}
+
+.ssl-report-label:hover {
+  background: #dde8ff !important; /* Светлый синий фон при ховере на левой колонке */
+  cursor: pointer;
+}
+
+.ssl-report-value:hover {
+  background: #f8f9fa !important; /* Светло-серый фон при ховере на правой колонке */
+  cursor: pointer;
+}
+
 
 /* Visibility Chart */
 .visibility-container {
@@ -1018,6 +1076,5 @@ color: #000;
 .traffic-table tr:last-child td:last-child {
   border-bottom-right-radius: 0;
 }
-
 
 
